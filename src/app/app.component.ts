@@ -30,31 +30,30 @@ export class AppComponent implements OnInit {
                 Validators.min(1) ]),
             'rlShare': new UntypedFormControl(10, [ Validators.required,
                 Validators.min(0), Validators.max(100) ]),
-            'countTanks': new UntypedFormControl(null, [ Validators.required,
+            'countTanks': new UntypedFormControl(0, [ Validators.required,
                 Validators.min(0) ]),
             'tanksShare': new UntypedFormControl(1, [ Validators.required,
                 Validators.min(0), Validators.max(100) ]),
-            'countTopDpsHps': new UntypedFormControl(null, [ Validators.required,
+            'countTopDpsHps': new UntypedFormControl(0, [ Validators.required,
                 Validators.min(0) ]),
             'topDpsHpsShare': new UntypedFormControl(0.5, [ Validators.required,
-                Validators.min(0), Validators.max(100) ]),
+                Validators.min(0), Validators.max(100) ])
         });
     }
 
     createMinusBlock(index = 0) {
         if (!this.fg.contains('minusPlayers')) {
             this.fg.addControl('minusPlayers', new UntypedFormGroup({
-                ['countMinus' + index]: new UntypedFormControl(null, [ Validators.required,
+                ['namesMinus' + index]: new UntypedFormControl(0, [ Validators.required,
                     Validators.min(0) ]),
                 ['percentMinus' + index]: new UntypedFormControl(10, [ Validators.required,
-                    Validators.min(0), Validators.max(100) ]),
+                    Validators.min(0), Validators.max(100) ])
             }));
         } else {
             // @ts-ignore
-            this.fg.controls['minusPlayers'].addControl(['countMinus' + index], new UntypedFormControl(null, [ Validators.required,
-                Validators.min(0) ]));
+            this.fg.controls['minusPlayers'].addControl([ 'namesMinus' + index ], new UntypedFormControl(null, [ Validators.required ]));
             // @ts-ignore
-            this.fg.controls['minusPlayers'].addControl(['percentMinus' + index], new UntypedFormControl(10, [ Validators.required,
+            this.fg.controls['minusPlayers'].addControl([ 'percentMinus' + index ], new UntypedFormControl(10, [ Validators.required,
                 Validators.min(0), Validators.max(100) ]));
         }
         this.countMinus.push(index);
@@ -71,60 +70,56 @@ export class AppComponent implements OnInit {
         const countTopDpsHps = fg.value.countTopDpsHps;
         const countTanks = fg.value.countTanks;
         // Расчет доли рла
-        const rlShare = fg.value.rlShare / 100 * bank;
+        const rlShare = Math.round(fg.value.rlShare / 100 * bank);
         bank = bank - rlShare;
         let html = `
-            <div>Банк: ${defBank} голд</div>
-            <div>Доля РЛА: ${rlShare} голд</div>
+            <div><b>Банк:</b> ${ defBank } голд.</div>
+            <div><b>Доля РЛА:</b> ${ rlShare } голд.</div>
         `;
         // Расчет доли танков и ДД/Хилов
-        const tanksShare = fg.value.tanksShare / 100 * bank;
-        const topDpsHpsShare = fg.value.topDpsHpsShare / 100 * bank;
+        const tanksShare = Math.round(fg.value.tanksShare / 100 * bank);
+        const topDpsHpsShare = Math.round(fg.value.topDpsHpsShare / 100 * bank);
         bank = bank - (countTopDpsHps * topDpsHpsShare) - (countTanks * tanksShare);
         // Расчет доли для всех
-        const defPlayersShare = bank / raiders;
+        const defPlayersShare = Math.round(bank / raiders);
         // Расчет доли штрафников
         const minusPlayers = fg.value.minusPlayers;
-        const minusObj: any = {};
         const getTanksTopDpsHps = (share: number) => {
             if (countTanks) {
                 html += `
-                <div>Доля Танка(ов): ${tanksShare + share} голд</div>
+                <div><b>Доля Танка(ов):</b> ${ tanksShare + share } голд.</div>
             `;
             }
             if (countTopDpsHps) {
                 html += `
-            <div>Доля ТОП ДПС/ХПС: ${topDpsHpsShare + share} голд</div>
+            <div><b>Доля ТОП ДПС/ХПС:</b> ${ topDpsHpsShare + share } голд.</div>
         `;
             }
-        }
+        };
         if (this.countMinus.length) {
             let allPunishShare = 0;
             let allPunishPlayers = 0;
             let minusHtml = '';
             for (let key of this.countMinus) {
-                let count = minusPlayers['countMinus'+key];
-                let percent = minusPlayers['percentMinus'+key];
-                minusObj[percent] = {
-                    count,
-                    percent
-                }
+                let names = minusPlayers['namesMinus' + key].split(' ');
+                let count = names.length;
+                let percent = minusPlayers['percentMinus' + key];
                 allPunishShare += (defPlayersShare - (percent / 100 * defPlayersShare)) * count;
                 allPunishPlayers += count;
-                const share = defPlayersShare - (percent / 100 * defPlayersShare);
+                const share = Math.round(defPlayersShare - (percent / 100 * defPlayersShare));
                 minusHtml += `
-                    <div>Доля игрока с штрафом -${percent}%: ${share} голд</div>
+                    <div><b>Доля игрока с штрафом -${ percent }% (${ names.join(', ') }):</b> ${ share } голд.</div>
                 `;
             }
-            const totPlayersShare = (bank - allPunishShare) / (raiders - allPunishPlayers);
+            const totPlayersShare = Math.round((bank - allPunishShare) / (raiders - allPunishPlayers));
             getTanksTopDpsHps(totPlayersShare);
             html += `
-                <div>Доля рейдера(без минусов): ${totPlayersShare} голд</div>
+                <div><b>Доля рейдера(без минусов):</b> ${ totPlayersShare } голд.</div>
             ` + minusHtml;
         } else {
             getTanksTopDpsHps(defPlayersShare);
             html += `
-                <div>Доля рейдера(без минусов): ${defPlayersShare} голд</div>
+                <div><b>Доля рейдера(без минусов):</b> ${ defPlayersShare } голд.</div>
             `;
         }
         this.result = html;
@@ -132,6 +127,8 @@ export class AppComponent implements OnInit {
 
     clear() {
         this.fg = this.fgInit();
+        this.countMinus = [];
+        this.result = '';
         this.cdr.detectChanges();
     }
 }

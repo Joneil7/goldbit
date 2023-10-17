@@ -1,0 +1,106 @@
+// fonts
+$font-main: 'OpenSans',san-serif;
+
+//colors
+$color-black: #000;
+$color-hover: #EA3546;
+$color-link: #0F80EA;
+$color-white: #fff;
+$color-darkgrey: #8C8C8C;
+$color-grey: #acacac;
+$color-lightgrey: #f5f5f5;
+$color-addgrey: #D5D5D5;
+$bg-lightgrey: #f1f1f1;
+$color-gold: #FFC107;
+$bg-color: #292929;
+$color-lightgrey2: #FCFCFC;
+
+// цвет кнопки
+$btn-blue: #0F80EA;
+$btn-blue-h: #0F70CB;
+$btn-blue-a: #0B5BA7;
+$btn-blue-d: #AFD1F3;
+
+$btn-grey: #EAEAEA;
+$btn-grey-h: #DFDFDF;
+$btn-grey-a: #D5D5D5;
+$btn-grey-d: #F8F8F8;
+
+$btn-br-h: #29292914;
+$btn-br-a: #29292929;
+// цвет кнопки END
+
+$hover-banner: #e1e1e1;
+
+$color-vk: #4C75A3;
+$color-fb: #3c5a99;
+$color-ok: #f7931e;
+$color-tw: #1da1f2;
+$color-wa: #25d366;
+$color-yt: #e02f2f;
+
+$role_red: #ff3d00;
+$role_black: #000;
+$role_blue: #3949ab;
+$role_yellow: #fb8c00;
+$role_pink: #ff5e8b;
+$role_green: #4caf50;
+$role_grey: #d3d3d3;
+$role_chaorcal: #333333;
+$role_darkred: #bc1111;
+$role_darkgreen: #00A161;
+$role_darkgrey: #acacac;
+
+
+//box-shadow
+$bx-sh: 0px 2px 30px rgba(188, 188, 188, 0.5);
+
+//main linear-gradient
+$ln-gr: linear-gradient(134.72deg, #FF0467 0%, #fc7437 101.5%);
+$grw-l: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 66.67%);
+$grw-r: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 66.67%);
+//border grey
+$bd-grey: rgba(213, 213, 213, 0.4);
+
+//other
+$br-esm: 8px;
+$br-sm: 12px;
+$br-md: 16px;
+$br-lg: 20px;
+$br-xl: 100px;
+
+//header
+$header-height-desktop: 64px;
+$header-height-mobile: 52px;
+$header-shadow: 0 4px 10px 0 rgba(175, 175, 175, 0.1);
+
+//page
+$page-max-width: 1440px;
+$page-sidebar: 261px;
+$page-padding: 24px;
+$page-padding-b: 48px;
+$page-main: calc(100% - 285px);
+$page-main2: calc(100% - 570px);
+
+
+//notification
+$notification-height-desktop: 43px;
+
+// цвет БГ
+$bg-colors:
+  'clr1' #78909C #ECEFF1 #6a8491 #dde3e6,
+  'clr2' #3F51B5 #E8EAF6 #3849a2 #d6d9ef,
+  'clr3' #9C27B0 #F3E5F5 #89229b #ebd3ee,
+  'clr4' #8D6E63 #EFEBE9 #7e6258 #e4deda,
+  'clr5' #009688 #E0F2F1 #007d71 #ceeae9,
+  'clr6' #03A9F4 #E1F5FE #0398db #c8edfd,
+  'clr7' #FF7043 #FBE9E7 #ff5d2a #f7d5d1,
+  'clr8' #8C8C8C #EBEBEB #7f7f7f #dedede;
+
+:root {
+  --color-link: #0F80EA;
+  --color-hover: #EA3546;
+  --color-darkgrey: #8C8C8C;
+  --color-white: #fff;
+  --color-black: #000;
+}

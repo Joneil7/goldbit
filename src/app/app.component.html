@@ -1,59 +1,72 @@
 <div class="container">
-    <h2>Данные</h2>
-    <form class="data" [formGroup]="fg" (ngSubmit)="submit(fg)">
-        <div class="input" [xFormField]="{min: 'Мин. кол-во 1'}">
-            <label>Банк (голд)</label>
-            <input type="number" formControlName="bank" min="1">
-        </div>
-        <div class="input" [xFormField]="{min: 'Мин. кол-во 0'}">
-            <label>Кол-во рейдеров</label>
-            <input type="number" formControlName="raiders" min="0">
-        </div>
-        <div class="input" [xFormField]="{min: 'Мин. кол-во 0', max: 'Макс. кол-во 100'}">
-            <label>Доля рла в %</label>
-            <input type="number" formControlName="rlShare" min="0" max="100">
-        </div>
-        <div class="block">
-            <div class="input" [xFormField]="{min: 'Мин. кол-во 0', max: 'Макс. кол-во 100'}">
-                <label>Доля танков в %</label>
-                <input type="number" formControlName="tanksShare" min="0" max="100">
-            </div>
-            <div class="input" [xFormField]="{min: 'Мин. кол-во 0'}">
-                <label>Кол-во танков</label>
-                <input type="number" formControlName="countTanks" min="0">
-            </div>
-        </div>
-        <div class="block">
-            <div class="input" [xFormField]="{min: 'Мин. кол-во 0', max: 'Макс. кол-во 100'}">
-                <label>Доля топ хилов/дд в %</label>
-                <input type="number" formControlName="topDpsHpsShare" min="0" max="100">
-            </div>
-            <div class="input" [xFormField]="{min: 'Мин. кол-во 0'}">
-                <label>Кол-во топ хилов/дд</label>
-                <input type="number" formControlName="countTopDpsHps" min="0">
-            </div>
-        </div>
-        <h3>Минуса рейдеров</h3>
-        <div *ngIf="countMinus.length" formGroupName="minusPlayers">
-            <div class="block" *ngFor="let itm of countMinus; index as i">
-                <div class="input" [xFormField]="{min: 'Мин. кол-во 0'}">
-                    <label>Кол-во человек</label>
-                    <input type="number" [formControlName]="'countMinus'+i" min="0">
+    <div class="card">
+        <h2>Калькулятор голдбита</h2>
+        <form class="form" [formGroup]="fg" (ngSubmit)="submit(fg)">
+            <div class="form__data">
+                <div class="form__block form__block-3">
+                    <div class="input" [xFormField]="{min: 'Мин. кол-во 1'}">
+                        <label>Банк (голд)</label>
+                        <input type="number" formControlName="bank" min="1">
+                    </div>
+                    <div class="input" [xFormField]="{min: 'Мин. кол-во 0'}">
+                        <label>Кол-во рейдеров</label>
+                        <input type="number" formControlName="raiders" min="0">
+                    </div>
+                    <div class="input" [xFormField]="{min: 'Мин. кол-во 0', max: 'Макс. кол-во 100'}">
+                        <label>Доля рла в %</label>
+                        <input type="number" formControlName="rlShare" min="0" max="100">
+                    </div>
                 </div>
-                <div class="input" [xFormField]="{min: 'Мин. кол-во 0', max: 'Макс. кол-во 100'}">
-                    <label>на сколько процентов</label>
-                    <input type="number" [formControlName]="'percentMinus'+i" min="0" max="100">
+                <div class="form__block form__block form__block-2">
+                    <div class="input" [xFormField]="{min: 'Мин. кол-во 0', max: 'Макс. кол-во 100'}">
+                        <label>Доля танков в %</label>
+                        <input type="number" formControlName="tanksShare" min="0" max="100">
+                    </div>
+                    <div class="input" [xFormField]="{min: 'Мин. кол-во 0'}">
+                        <label>Кол-во танков</label>
+                        <input type="number" formControlName="countTanks" min="0">
+                    </div>
+                </div>
+                <div class="form__block form__block form__block-2">
+                    <div class="input" [xFormField]="{min: 'Мин. кол-во 0', max: 'Макс. кол-во 100'}">
+                        <label>Доля топ хилов/дд в %</label>
+                        <input type="number" formControlName="topDpsHpsShare" min="0" max="100">
+                    </div>
+                    <div class="input" [xFormField]="{min: 'Мин. кол-во 0'}">
+                        <label>Кол-во топ хилов/дд</label>
+                        <input type="number" formControlName="countTopDpsHps" min="0">
+                    </div>
                 </div>
             </div>
-        </div>
-        <button type="button" (click)="createMinusBlock(countMinus.length)">Добавить минус</button>
-        <button type="submit">Вычислить</button>
-        <button type="submit" (click)="clear()">Сбросить</button>
+            <div class="form__head" *ngIf="countMinus.length">
+                <h4>Минуса рейдеров</h4>
+                <div class="form__data">
+                    <ng-container *ngFor="let itm of countMinus; index as i">
+                        <div class="form__block form__block form__block-2" formGroupName="minusPlayers">
+                            <div class="input">
+                                <label>Имена персонажей</label>
+                                <input type="text" [formControlName]="'namesMinus'+i">
+                            </div>
+                            <div class="input" [xFormField]="{min: 'Мин. кол-во 0', max: 'Макс. кол-во 100'}">
+                                <label>Процент</label>
+                                <input type="number" [formControlName]="'percentMinus'+i" min="0" max="100">
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="form__buttons">
+                <button type="button" (click)="createMinusBlock(countMinus.length)">Добавить минус</button>
+            </div>
+            <div class="form__buttons">
+                <button type="submit" [disabled]="fg.invalid">Расчитать</button>
+                <button type="submit" (click)="clear()">Сбросить</button>
+            </div>
 
-    </form>
-    <ng-container *ngIf="result">
-        <h2>Результат</h2>
-        <div [innerHTML]="result"></div>
-    </ng-container>
-
+        </form>
+        <ng-container *ngIf="result">
+            <h2>Результат</h2>
+            <div class="result" [innerHTML]="result"></div>
+        </ng-container>
+    </div>
 </div>

@@ -1,0 +1,110 @@
+$screen-xx: 359.98px;
+
+@mixin screen-xx {
+  @media only screen and (max-width: $screen-xx) {
+    @content;
+  }
+}
+@mixin screen-mxx {
+  @media only screen and (min-width: $screen-xx) {
+    @content;
+  }
+}
+
+// ---------------  -----------------
+$screen-xs: 480.98px;
+
+@mixin screen-xs {
+  @media only screen and (max-width: $screen-xs) {
+    @content;
+  }
+}
+@mixin screen-mxs {
+  @media only screen and (min-width: $screen-xs) {
+    @content;
+  }
+}
+
+// Additional breakpoint for prediction card
+$screen-esm: 549.98px;
+
+@mixin screen-esm {
+  @media only screen and (max-width: $screen-esm) {
+    @content;
+  }
+}
+@mixin screen-mesm {
+  @media only screen and (min-width: $screen-esm) {
+    @content;
+  }
+}
+
+// Small screen / tablet
+$screen-sm: 767.98px;
+
+@mixin screen-sm {
+  @media only screen and (max-width: $screen-sm) {
+    @content;
+  }
+}
+
+@mixin screen-msm {
+  @media only screen and (min-width: $screen-sm) {
+    @content;
+  }
+}
+
+// Medium screen / desktop
+$screen-md: 991.98px;
+
+@mixin screen-md {
+  @media only screen and (max-width: $screen-md) {
+    @content;
+  }
+}
+@mixin screen-mmd {
+  @media only screen and (min-width: $screen-md) {
+    @content;
+  }
+}
+
+// Large screen / desktop
+$screen-lg: 1279.98px;
+
+@mixin screen-lg {
+  @media only screen and (max-width: $screen-lg) {
+    @content;
+  }
+}
+@mixin screen-mlg {
+  @media only screen and (min-width: $screen-lg) {
+    @content;
+  }
+}
+
+// Full-hd screen / desktop
+$screen-xl: 1439.98px;
+
+@mixin screen-xl {
+  @media only screen and (max-width: $screen-xl) {
+    @content;
+  }
+}
+@mixin screen-mxl {
+  @media only screen and (min-width: $screen-xl) {
+    @content;
+  }
+}
+
+
+
+@mixin screen-hd {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin home3 {
+  @media only screen and (max-width: 700px) {
+    @content;
+  }
+}
