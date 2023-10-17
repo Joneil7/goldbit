@@ -111,6 +111,16 @@ label {
         flex: 0 0 calc(33.33% - 8px);
       }
     }
+    &-name {
+      > .input {
+        &:first-child {
+          flex: 0 0 80%;
+        }
+        &:last-child {
+          flex: 0 0 20%;
+        }
+      }
+    }
   }
   &__buttons {
     display: flex;

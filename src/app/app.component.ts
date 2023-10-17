@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     createMinusBlock(index = 0) {
         if (!this.fg.contains('minusPlayers')) {
             this.fg.addControl('minusPlayers', new UntypedFormGroup({
-                ['namesMinus' + index]: new UntypedFormControl(0, [ Validators.required,
+                ['namesMinus' + index]: new UntypedFormControl(null, [ Validators.required,
                     Validators.min(0) ]),
                 ['percentMinus' + index]: new UntypedFormControl(10, [ Validators.required,
                     Validators.min(0), Validators.max(100) ])

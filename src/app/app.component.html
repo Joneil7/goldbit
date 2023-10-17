@@ -42,7 +42,7 @@
                 <h4>Минуса рейдеров</h4>
                 <div class="form__data">
                     <ng-container *ngFor="let itm of countMinus; index as i">
-                        <div class="form__block form__block form__block-2" formGroupName="minusPlayers">
+                        <div class="form__block form__block form__block-name" formGroupName="minusPlayers">
                             <div class="input">
                                 <label>Имена персонажей</label>
                                 <input type="text" [formControlName]="'namesMinus'+i">
