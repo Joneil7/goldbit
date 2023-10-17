@@ -1,0 +1,122 @@
+.gold-bit {
+  > .title {
+    text-align: center;
+  }
+  // .gold-bit__inner
+  &__inner {
+    display: flex;
+    gap: 24px;
+  }
+  // .gold-bit__inner-c
+  &__inner-c {
+    & + .gold-bit__inner-c {
+      position: relative;
+      min-width: 400px;
+      .title {
+        text-align: center;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -12px;
+        height: 100%;
+        border-right: 1px solid $color-addgrey;
+      }
+    }
+  }
+  // .gold-bi__tot
+  &__tot {
+    font-size: 14px;
+  }
+  // .gold-bi__tot-row
+  &__tot-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+    & + .title {
+      margin-top: 12px;
+    }
+    > span {
+      &:nth-child(1) {
+        display: flex;
+        width: fit-content;
+      }
+      &:nth-child(2) {
+        position: relative;
+        display: flex;
+        gap: 4px;
+        width: 100%;
+        > span.border {
+          display: block;
+          width: 100%;
+          border-bottom: 1px dotted $color-addgrey;
+        }
+      }
+    }
+  }
+  // .gold-bit__head
+  &__head {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+  // .gold-bit__btns
+  &__btns {
+    display: flex;
+    gap: 12px;
+  }
+  // .gold-bit__row
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+    &.col2 {
+      > div {
+        flex: 0 0 calc(50% - 6px);
+      }
+    }
+    &.col3 {
+      > div {
+        flex: 0 0 calc(33.333% - 8px);
+      }
+    }
+    &.btns {
+      justify-content: space-between;
+      .title {
+        margin-bottom: 0;
+      }
+    }
+  }
+  // .gold-bit__table
+  &__table {
+  }
+  // .gold-bit__table-i
+  &__table-i {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+  // .gold-bit__table-row
+  &__table-row {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    gap: 4px;
+    &:first-child {
+      font-size: 14px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+  // .gold-bit__table-column
+  &__table-column {
+  }
+}

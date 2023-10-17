@@ -1,0 +1,28 @@
+.title {
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+h1.title {
+}
+h2.title {
+}
+h3.title {
+}
+h4.title {
+}
+h5.title {
+}
+.green {
+  color: #00a161;
+}
+.red {
+  color: #bc1111;
+}
+.icon__coin {
+  display: inline-block;
+  width: 10px;
+  height: 19px;
+  flex: 0 0 10px;
+  background: url('../../images/coin.png') 50% 50% / 20px 20px no-repeat;
+}

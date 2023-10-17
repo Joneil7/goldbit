@@ -1,0 +1,28 @@
+button {
+  font-size: 14px;
+  line-height: 1;
+  color: $color-black;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-white;
+  border: 1px solid $color-black;
+  border-radius: $br-xl;
+  padding: 0 16px;
+  height: 32px;
+  cursor: pointer;
+  outline-style: none;
+  white-space: nowrap;
+  user-select: none;
+  text-align: center;
+  transition: all 0.2s ease;
+  width: fit-content;
+  &:disabled {
+    opacity: 0.3;
+    cursor: no-drop;
+  }
+  &:hover {
+    background-color: $color-lightgrey;
+  }
+}

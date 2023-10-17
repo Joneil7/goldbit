@@ -8,7 +8,7 @@ import { FormControlName } from '@angular/forms';
     template: `
     <ng-content></ng-content>
     <ng-container *ngIf="errs$ | async as errorList">
-        <span *ngIf="errorList[0]">{{ errorList[0] }}</span>
+        <span class="form-error" *ngIf="errorList[0]">{{ errorList[0] }}</span>
     </ng-container>`,
     changeDetection: ChangeDetectionStrategy.OnPush
 })

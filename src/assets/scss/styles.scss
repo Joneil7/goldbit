@@ -33,141 +33,15 @@ body {
   font-family: $font-main;
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.35;
+  line-height: normal;
   min-width: 320px;
   position: relative;
   color: #000;
   -webkit-tap-highlight-color: transparent;
 }
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   height: 100vh;
-}
-
-.card {
-  margin: auto;
-  padding: 24px;
-  box-shadow: $bx-sh;
-  border-radius: $br-md;
-  background-color: $color-white;
-  max-width: 500px;
-}
-
-input {
-  height: 32px;
-  border: 1px solid $color-addgrey;
-  background-color: $bg-lightgrey;
-  border-radius: $br-sm;
-  width: 100%;
-  padding: 0 12px;
-  .ng-touched.ng-dirty.ng-invalid {
-    background: #faeeee;
-    border-color: #faeeee;
-  }
-}
-label {
-  font-size: 14px;
-}
-
-.input {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.form {
-  &:not(:last-child) {
-    margin-bottom: 16px;
-  }
-  &__head {
-    h4 {
-      margin-bottom: 12px;
-    }
-    &:not(:last-child) {
-      margin-bottom: 16px;
-    }
-  }
-  &__data {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    &:not(:last-child) {
-      margin-bottom: 16px;
-    }
-  }
-  &__block {
-    display: flex;
-    gap: 12px;
-
-    &-2 {
-      > .input {
-        flex: 0 0 calc(50% - 6px);
-      }
-    }
-    &-3 {
-      > .input {
-        flex: 0 0 calc(33.33% - 8px);
-      }
-    }
-    &-name {
-      > .input {
-        &:first-child {
-          flex: 0 0 80%;
-        }
-        &:last-child {
-          flex: 0 0 20%;
-        }
-      }
-    }
-  }
-  &__buttons {
-    display: flex;
-    gap: 12px;
-    &:not(:last-child) {
-      margin-bottom: 16px;
-    }
-  }
-}
-
-h2 {
-  margin-bottom: 16px;
-  text-align: center;
-}
-button {
-  font-size: 14px;
-  line-height: 1;
-  color: $color-black;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $color-white;
-  border: 1px solid $color-black;
-  border-radius: $br-xl;
-  padding: 0 16px;
-  height: 32px;
-  cursor: pointer;
-  outline-style: none;
-  white-space: nowrap;
-  user-select: none;
-  text-align: center;
-  transition: all 0.2s ease;
-  width: fit-content;
-  &:disabled {
-    opacity: 0.3;
-    cursor: no-drop;
-  }
-  &:hover {
-
-  }
-}
-
-.result {
-  > div {
-    &:not(:last-child) {
-      margin-bottom: 8px;
-    }
-  }
 }
